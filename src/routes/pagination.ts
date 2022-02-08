@@ -1,7 +1,8 @@
 import { Router } from "express";
+import paginationControllers from "../controllers/paginationControllers";
 
 const paginationRouter = Router();
 
-paginationRouter.get('/', (req, res) => res.send('eae maria'));
+paginationRouter.get('/',  paginationControllers.getPagination);
 
 export default paginationRouter;

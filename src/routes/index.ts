@@ -3,6 +3,6 @@ import paginationRouter from './pagination';
 
 const router = Router();
 
-router.use('/pagination', paginationRouter);
+router.use('/paginacao', paginationRouter);
 
 export default router;
