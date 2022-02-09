@@ -13,6 +13,11 @@ The objetive was to build an API REST that could:
 - Retrieve a error message if given input is wrong;
 - Test the endpoint;
 
+## Documentation
+```
+https://app.swaggerhub.com/apis-docs/PedroSpelta/rarolabs-back/2.0.0
+```
+
 ## Preview
 
 Preview the example live on Heroku.  
