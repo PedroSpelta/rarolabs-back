@@ -6,11 +6,17 @@ const paginationSchema = Joi.object({
   totalPages: Joi.number().required(),
 })
 
-export const validatePaginationQuery = (query:any) => {
+const validatePaginationQuery = (query:any) => {
   // Check if query is valid
+  
   const isValid = paginationSchema.validate(query);
 
   // Throw a error if it is not
   if ( isValid.error) throw paginationErrors.invalidQuery;
+  
   return;  
+}
+
+export default {
+  validatePaginationQuery
 }
