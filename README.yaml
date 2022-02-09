@@ -1,0 +1,54 @@
+swagger: "2.0"
+info:
+  description: "[ pt-br ] Documentação da API de paginação do processo seletivo da Rara Labs. Seu objetivo é fornecer uma versão paginada de um total de páginas consultadas pelo usuário e páginas reais de um aplicativo.\n\n [ en ] Pagination API documentation from the selective process of Rara Labs. It's objective is to deliver a paginated version of a user queried total pages and actual pages of an aplication."
+  version: "2.0.0"
+  title: "Pagination API"
+  termsOfService: "http://swagger.io/terms/"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "spelta-rarolabs-challenge.herokuapp.com"
+tags:
+- name: "paginacao"
+  description: "Pagination routes"
+schemes:
+- "https"
+- "http"
+paths:
+  /paginacao:
+    get:
+      tags:
+        - paginacao
+      summary: "Rota de paginacao."
+      description: "[ pt-br ] Rota de paginação. Neste end-point a resposta é uma paginação de algumas páginas com uma página atual ( ** dentro **). Ela contém apenas 5 páginas no máximo, e se tiver mais além das exibidas, mostrará um ... \n\n [ en ] Pagination route. In this end-point the response is a pagination of some pages with a actual page ( ** inside **). It only contains 5 pages at maximum, and if has more beyond those displayed it will show a ... " 
+      operationId: "paginacao"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: query
+        name: paginaAtual
+        type: integer
+        required: true
+      - in: query
+        name: quantidadePaginas
+        type: integer
+        required: true
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+              $ref: "#/definitions/Paginacao"
+        "400":
+          description: "bad request, paginaAtual and quantidadePaginas must be integers  "
+          schema:
+            $ref: "#/definitions/BadPaginacao"
+definitions:
+  Paginacao:
+    example: ['**1**', '2', '3', '4', '5', '...']
+  BadPaginacao:
+    type: object
+    properties:
+      message:
+        type: string
+        example: "paginaAtual and quantidadedePaginas must be numbers"
