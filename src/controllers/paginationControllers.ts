@@ -8,16 +8,14 @@ interface IController {
 export const getPagination: IController = async (req, res, next) => {
   try {
     // Get the query from api consumer
-    const { paginaAtual, quantidadePaginas } = req.query;
-    const actualPage = Number(paginaAtual);
-    const totalPages = Number(quantidadePaginas);
+    const { paginaAtual, quantidadePaginas } = req.query;    
 
     // Validate query and return the pagination
     const pagination = await paginationServices.getPagination(
-      actualPage,
-      totalPages
+      paginaAtual,
+      quantidadePaginas
     );
-
+    
     // Response to user the pagination
     return res.status(200).json(pagination);
   } catch (err) {
